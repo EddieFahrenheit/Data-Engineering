@@ -1,5 +1,7 @@
+# docker-compose automatically creates a network for all the services defined in the file,
+# and each service can communicate with other services on that network by default
 services:
-  pgdatabase:
+  green_trip_database:
     image: postgres:13
     environment:
       - POSTGRES_USER=root
@@ -9,6 +11,7 @@ services:
       - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
     ports:
       - "5432:5432"
+
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -16,4 +19,9 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "8080:80"
-    
+# commands
+
+# docker-compose up -d
+# -d flag is for detached mode, to run the containers in the background rather than enter the shell
+
+# docker-compose down to stop the containers
