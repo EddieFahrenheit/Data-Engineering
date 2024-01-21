@@ -1,7 +1,7 @@
 # HCL (HashiCorp Configuration Language) is a configuration language built by HashiCorp.
 # Terraform is like a human readable blueprint that automates everything in multiple cloud providers
 
-# Global settings
+# Terraform settings
 terraform {
   required_providers {
     google = {
