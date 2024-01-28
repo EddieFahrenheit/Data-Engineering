@@ -3,6 +3,8 @@
 services:
   green_trip_database:
     image: postgres:13
+    networks:
+      - mynetwork
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
@@ -14,11 +16,16 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    networks:
+      - mynetwork
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "8080:80"
+
+  networks:
+    mynetwork:
 # commands
 
 # docker-compose up -d
