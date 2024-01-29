@@ -41,3 +41,23 @@ resource "google_bigquery_dataset" "demo_dataset" {
   dataset_id = var.bq_dataset_name
   location   = var.location
 }
+
+## Docker examples
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
+
+resource "docker_image" "example" {
+  name = "example:latest"
+}
+
+resource "docker_container" "example" {
+  name  = "example"
+  image = docker_image.example.latest
+}
+
+resource "null_resource" "example" {
+  provisioner "local-exec" {
+    command = "docker-compose up -d"
+  }
+}
