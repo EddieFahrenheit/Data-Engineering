@@ -43,21 +43,21 @@ resource "google_bigquery_dataset" "demo_dataset" {
 }
 
 ## Docker examples
-provider "docker" {
-  host = "unix:///var/run/docker.sock"
-}
+# provider "docker" {
+#   host = "unix:///var/run/docker.sock"
+# }
 
-resource "docker_image" "example" {
-  name = "example:latest"
-}
+# resource "docker_image" "example" {
+#   name = "example:latest"
+# }
 
-resource "docker_container" "example" {
-  name  = "example"
-  image = docker_image.example.latest
-}
+# resource "docker_container" "example" {
+#   name  = "example"
+#   image = docker_image.example.latest
+# }
 
-resource "null_resource" "example" {
-  provisioner "local-exec" {
-    command = "docker-compose up -d"
-  }
-}
+# resource "null_resource" "example" {
+#   provisioner "local-exec" {
+#     command = "docker-compose up -d"
+#   }
+# }
