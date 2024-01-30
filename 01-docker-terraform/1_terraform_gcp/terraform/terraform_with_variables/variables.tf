@@ -1,6 +1,6 @@
 variable "credentials" {
   description = "Credentials"
-  default     = "keys/terraform-runner_key.json"
+  default     = "~/.google/credentials/google_credentials.json"
 }
 
 variable "project" {
