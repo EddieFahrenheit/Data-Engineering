@@ -20,8 +20,8 @@ provider "google" {
 }
 
 # A resource block corresponds to a product in the cloud
-# Args: a product type ("google_storage_bucket") and custom name ("demo-bucket").
-resource "google_storage_bucket" "demo-bucket" {
+# Args: a product type ("google_storage_bucket") and custom name
+resource "google_storage_bucket" "de_zoomcamp_airflow_bucket"{
   name          = var.gcs_bucket_name
   location      = var.location
   force_destroy = true
@@ -37,7 +37,7 @@ resource "google_storage_bucket" "demo-bucket" {
   }
 }
 
-resource "google_bigquery_dataset" "demo_dataset" {
+resource "google_bigquery_dataset" "trips_data_all" {
   dataset_id = var.bq_dataset_name
   location   = var.location
 }

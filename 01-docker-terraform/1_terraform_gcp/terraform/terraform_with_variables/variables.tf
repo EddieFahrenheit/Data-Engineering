@@ -17,17 +17,17 @@ variable "location" {
   description = "Project location"
   default     = "US"
 }
-variable "bq_dataset_name" {
-  description = "BigQuery dataset name"
-  default     = "demo_dataset"
-}
-
 variable "gcs_bucket_name" {
   description = "The storage bucket name"
-  default     = "esoteric-cab-411900"
+  default     = "de-zoomcamp-airflow"
 }
 
 variable "gcs_storage_class" {
   description = "The storage class of the bucket"
   default     = "STANDARD"
+}
+
+variable "bq_dataset_name" {
+  description = "BigQuery dataset name"
+  default     = "trips_data_all"
 }
