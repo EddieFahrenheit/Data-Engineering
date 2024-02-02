@@ -9,6 +9,7 @@ RUN apt-get update -qq && apt-get install vim -qqq
 # git gcc g++ -qqq
 
 COPY requirements.txt .
+USER $AIRFLOW_UID
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Ref: https://airflow.apache.org/docs/docker-stack/recipes.html
@@ -20,6 +21,7 @@ ENV GCLOUD_HOME=/home/google-cloud-sdk
 
 ENV PATH="${GCLOUD_HOME}/bin/:${PATH}"
 
+USER root
 RUN DOWNLOAD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz" \
     && TMP_DIR="$(mktemp -d)" \
     && curl -fL "${DOWNLOAD_URL}" --output "${TMP_DIR}/google-cloud-sdk.tar.gz" \
@@ -35,7 +37,7 @@ RUN DOWNLOAD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/goo
 
 WORKDIR $AIRFLOW_HOME
 
-COPY scripts scripts
-RUN chmod +x scripts
+# COPY scripts scripts
+# RUN chmod +x scripts
 
 USER $AIRFLOW_UID
